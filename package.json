@@ -6,8 +6,8 @@
   "scripts": {
     "watch": "copy-and-watch --watch --clean templates/** dist/templates",
     "server": "tsc-watch --noClear --onSuccess \"node dist/server.js\"",
-    "start": "npm-run-all --parallel watch server",
-    "build": "node dist/server.js"
+    "build": "npm-run-all --parallel watch server",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
