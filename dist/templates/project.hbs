@@ -1,0 +1,15 @@
+<div>
+    <p>Select the technologies you are looking for in my projects</p>
+    <ul>
+        {{#each tech_list}}
+            <li>{{this.tech_name}}</li>
+        {{/each}}
+    </ul>
+    <div>
+        {{#each project_list}}
+        <div>
+            <h1>{{this.project_name}}</h1>
+        </div>
+        {{/each}}
+    </div>
+</div>

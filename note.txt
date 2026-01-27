@@ -1,0 +1,25 @@
+-- DROP TABLE IF EXISTS Qualifications;
+-- DROP TABLE IF EXISTS Experience;
+
+
+-- CREATE TABLE Qualifications   (
+--     qual_id INT NOT NULL PRIMARY KEY,
+--     qual_name VARCHAR(255) NOT NULL,
+--     startdate DATE NOT NULL,  
+--     end_date DATE NOT NULL,
+--     cert_link VARCHAR(255) NOT NULL,
+--     topics VARCHAR(255) [] NOT NULL,
+--     educator VARCHAR(255) NOT NULL,
+--     educator_link VARCHAR(255) NOT NULL,
+--     study_format VARCHAR(255) NOT NULL
+-- ); 
+
+
+-- CREATE TABLE Experience (
+--     company_id INT NOT NULL PRIMARY KEY,
+--     company_name VARCHAR(255) NOT NULL,
+--     start_date DATE NOT NULL,
+--     end_date DATE NOT NULL,
+--     company_link VARCHAR(255) NOT NULL,
+--     company_desc VARCHAR(255) NOT NULL
+-- );
