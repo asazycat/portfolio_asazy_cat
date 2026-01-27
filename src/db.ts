@@ -1,6 +1,6 @@
 import mysql, { Connection } from 'mysql2/promise';
 
-export const db: Promise<Connection> = (async () =>  {
+export const db: Promise<Connection | undefined> = (async () =>  {
   try{ return await mysql.createConnection({
     host:'localhost',
     user: 'root',
