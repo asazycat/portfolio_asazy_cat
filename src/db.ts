@@ -10,8 +10,7 @@ export const db: Promise<Connection> = (async () =>  {
 
 }).then((res) => res)
   } catch(err: any) {
-    console.log(`${err.statusCode}, ${err.message}`)
-    throw err
+    console.log(`${err.statusCode}, ${err.message} ---------------`)
   }
 })()
 
