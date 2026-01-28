@@ -25,8 +25,8 @@ exports.db = (() => __awaiter(void 0, void 0, void 0, function* () {
         }).then((res) => res);
     }
     catch (err) {
-        console.log(`${err.statusCode}, ${err.message}`);
-        throw err;
+        console.log(`${err.statusCode}, ${err.message} ---------------`);
+        return err;
     }
 }))();
 //# sourceMappingURL=db.js.map

@@ -1,11 +1,12 @@
 import express from "express";
 import router from "./routes";
 import cors from "cors";
-import mysql from 'mysql';
+import dotenv from 'dotenv';
 import {engine}  from 'express-handlebars';
 import type {Express} from "express"
 
-const port = 5000;
+dotenv.config()
+const port = process.env.MYSQLPORT || 5000;
 
 const expressApp: Express = express();
 expressApp.use(express.json());
