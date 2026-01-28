@@ -7,12 +7,11 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
+    "type": "module",
     "target": "es6",
-    "types": [],
     // For nodejs:
     // "lib": ["esnext"],
-    // "types": ["node"],
+    "types": ["node"],
     // and npm install -D @types/node
 
     // Other Outputs
@@ -42,7 +41,7 @@
     "allowJs":true
     
   },
-  "include":["src/*.ts"],
+  "include":["src/**/*.ts"],
   "exclude": ["node_modules"]
 
 }
