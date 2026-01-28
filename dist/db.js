@@ -17,12 +17,15 @@ const promise_1 = __importDefault(require("mysql2/promise"));
 exports.db = (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
         return yield promise_1.default.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: 'kiloloki',
-            database: 'portfolio',
-            port: 3306
-        }).then((res) => res);
+            host: process.env.MYSQLHOST,
+            user: process.env.MYSQLUSER,
+            password: process.env.MYSQLPASSWORD,
+            database: process.env.MYSQLDATABASE
+        }).then((res) => {
+            console.log(process.env.MYSQLHOST);
+            console.log(process.env.MYSQLDATABASE);
+            return res;
+        });
     }
     catch (err) {
         console.log(`${err.statusCode}, ${err.message} ---------------`);
