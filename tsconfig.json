@@ -4,6 +4,8 @@
     // File Layout
     "rootDir": "./src",
     "outDir": "./dist",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
