@@ -20,7 +20,7 @@ export  async function getProjectModal() {
 export  async function getProjectModal2() {
       return (await db).execute(`
         SELECT 
-          Projects.*,
+          p.*,
         GROUP_CONCAT(pt.tech_item_name ORDER BY pt.tech_item_name SEPARATOR ', ') AS technologies
           FROM Projects p
         LEFT JOIN Project_tech_list pt
