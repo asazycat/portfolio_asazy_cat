@@ -1,0 +1,55 @@
+#techTitle {
+    color: #ecede7;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    font-size: 1.25em;
+    font-family: 'Orbitron';
+    border: 2px solid #CBDB44;
+    padding: 1em; 
+    border-radius: 5em;
+    background-color: #6c6b6b;
+    display:none;
+}
+
+.techList {
+    border-radius: 5em;
+    width:80%;
+    margin-top:5%;
+    display: flex;
+    grid-template-columns: 33% 33% 33% ;
+    margin-left:auto;
+    margin-right:auto;
+    border:2px solid #CBDB44;
+    padding: 2em;
+    text-align: center;
+    background-color: #6c6b6b;
+    max-height:min-content;
+
+}
+
+.eachTech {
+   padding: 2em ;
+   border: 2px solid red;
+}
+
+.techImg {
+    height: 120px;
+    width: 120px;
+}
+
+
+.techImg:hover {
+    height: 240px;
+    width: 240px;
+}
+@media (min-width:1000px) {
+    #techTitle {
+        display:block;
+    }
+    .techList {
+        display: grid;
+    }
+}
+

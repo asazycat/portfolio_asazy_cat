@@ -1,10 +1,12 @@
 <div>
-    <p>Select the technologies you are looking for in my projects</p>
-    <ul>
+    <p id="techTitle">Select the technologies you are looking for in my projects</p>
+    <div class="techList">
         {{#each tech_list}}
-            <li>{{this.tech_name}}</li>
+            <div class="eachTech">
+                <img src={{this.img_small}} alt={{this.tech_name}} class="techImg"/>
+            </div>
         {{/each}}
-    </ul>
+    </div>
     <div>
         {{#each project_list}}
         <div>
