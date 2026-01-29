@@ -12,7 +12,6 @@ function renderProject(data, res) {
     res.render('project', { layout: 'index', tech_list: data1[0], project_list: data2[0] });
 }
 function renderSkillsQualifications(data, res) {
-    console.log(data[0]);
     res.render('skillsQualifications', { layout: 'index', qualifications: data[0] });
 }
 function renderContact(data, res) {

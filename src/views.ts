@@ -14,7 +14,7 @@ export function renderProject (data: any, res: Response) {
 
 
 export function renderSkillsQualifications(data: any, res: Response) {
-    console.log(data[0])
+   
     res.render('skillsQualifications', {layout: 'index', qualifications: data[0]})
 }
 

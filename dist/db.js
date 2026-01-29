@@ -15,12 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.db = void 0;
 const promise_1 = __importDefault(require("mysql2/promise"));
 exports.db = (() => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b, _c, _d;
     try {
         return yield promise_1.default.createConnection({
-            host: process.env.MYSQLHOST,
-            user: process.env.MYSQLUSER,
-            password: process.env.MYSQLPASSWORD,
-            database: process.env.MYSQLDATABASE
+            host: (_a = process.env.MYSQLHOST) !== null && _a !== void 0 ? _a : 'localhost',
+            user: (_b = process.env.MYSQLUSER) !== null && _b !== void 0 ? _b : 'root',
+            password: (_c = process.env.MYSQLPASSWORD) !== null && _c !== void 0 ? _c : 'kiloloki',
+            database: (_d = process.env.MYSQLDATABASE) !== null && _d !== void 0 ? _d : 'portfolio'
         }).then((res) => {
             console.log(process.env.MYSQLHOST);
             console.log(process.env.MYSQLDATABASE);
