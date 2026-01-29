@@ -30,8 +30,10 @@
 }
 
 .eachTech {
-   padding: 2em ;
-   border: 2px solid red;
+   margin-left: auto;
+   margin-right: auto;
+   height:250px;
+   width:250px;
 }
 
 .techImg {
