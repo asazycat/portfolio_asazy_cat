@@ -1,11 +1,29 @@
 <div>
     <p id="techTitle">Select the technologies you are looking for in my projects</p>
+    <div class="techType">
+        <div><button>Programming Languages</button></div>
+        <div><button>Web Development</button></div>
+        <div style="display: none;"><button>Engineering</button></div>
+    </div>
     <div class="techList">
-        {{#each tech_list}}
-            <div class="eachTech">
-                <img src={{this.img_small}} alt={{this.tech_name}} class="techImg"/>
-            </div>
-        {{/each}}
+        <div class="programmingLanguage" style="display:none;">
+            {{#each tech_list}}
+                {{#TechType 'programmingLanguage' this}}
+                    <div class="eachTech">
+                        <img src={{this.img_small}} alt={{this.tech_name}} class="techImg"/>
+                    </div>
+                {{/TechType}}
+            {{/each}}
+        </div>
+        <div class="webDevelopment">
+            {{#each tech_list}}
+                {{#TechType 'webDevelopment' this}}
+                    <div class="eachTech">
+                        <img src={{this.img_small}} alt={{this.tech_name}} class="techImg"/>
+                    </div>
+                {{/TechType}}
+            {{/each}}
+        </div>
     </div>
     <div>
         {{#each project_list}}

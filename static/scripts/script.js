@@ -15,5 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.display = 'none'
         }
     })
+
+    document.getElementsByClassName('techType')[0].addEventListener('click', (e) => {
+        const techType = e.target.textContent
+        const techList = document.getElementsByClassName('techList')[0].children
+        
+
+    })
 })
 
