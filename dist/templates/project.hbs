@@ -6,9 +6,9 @@
         <div style="display: none;"><button>Engineering</button></div>
     </div>
     <div class="techList">
-        <div class="programmingLanguage" style="display:none;">
+        <div class="programmingLanguages" style="display:none;">
             {{#each tech_list}}
-                {{#TechType 'programmingLanguage' this}}
+                {{#TechType 'programmingLanguages' this}}
                     <div class="eachTech">
                         <img src={{this.img_small}} alt={{this.tech_name}} class="techImg"/>
                     </div>
@@ -29,6 +29,7 @@
         {{#each project_list}}
         <div>
             <h1>{{this.project_name}}</h1>
+            <a href={{this.github_link}}>Hosted Site</a>
         </div>
         {{/each}}
     </div>

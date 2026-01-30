@@ -6,8 +6,7 @@ export function TechType(filter: string, obj: {
     library_or_framework: number, 
     front_end: number
     }) {
-        console.log(filter, obj)
-    if (filter === 'programmingLanguage' && (obj.front_end === null && obj.library_or_framework === 0)) {
+    if (filter === 'programmingLanguages' && (obj.front_end === null && obj.library_or_framework === 0)) {
       return `
       <div class="eachTech">
                     <img src=${obj.img_small} alt=${obj.tech_name} class="techImg"/>
