@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementsByClassName('techType')[0].addEventListener('click', (e) => {
         let techType = e.target.textContent.split(' ').join('')
         techType = techType[0].toLowerCase() + techType.substring(1)
-        console.log(typeof techType)
-        console.log(techType)
         const techList = document.getElementsByClassName('techList')[0].children
         Array.from(techList).forEach((div) => {
             console.log(div)

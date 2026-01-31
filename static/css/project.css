@@ -1,16 +1,21 @@
 #techTitle {
+    padding-top: 1em;
     color: #ecede7;
     width: 80%;
     text-align: center;
     margin: auto;
-    margin-top: 5%;
-    font-size: 1.25em;
+    font-size: 2em;
     font-family: 'Orbitron';
-    border: 2px solid #CBDB44;
-    padding: 1em; 
-    border-radius: 5em;
-    background-color: #6c6b6b;
     display:none;
+    margin-top: 1%;
+
+}
+
+#techTitle > p {
+    border-bottom: 2px double #ecede7 ;
+    width:70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .techType {
@@ -18,32 +23,45 @@
     flex-direction: row;
     margin-left: auto;
     margin-right: auto;
-    width:50%;
-    border: 2px solid grey;
+    width:auto;
     align-items: center;
-    margin-top:5%;
     justify-content: space-around;
-    padding: 2em;
+    margin-top:1%;
+    height:3em;
 }
+
+.techType > button {
+    width: 100%;
+    background-color: transparent;
+    padding:1em;
+    font-size: 1em;
+    font-family: 'Orbitron';
+    border:0;
+    color:#ecede7;
+}
+
+.techType > button:hover {
+    color: #CBDB44;
+    opacity: 0.8;
+    font-size: 1.25em;
+}
+
 .techList {
-    margin-top: 5%;
    width:80%;
    margin-left: auto;
    margin-right: auto;
+   height: 15em;
 }
 
 .programmingLanguages, .webDevelopment {
     min-width:100%;
     display: grid;
     grid-template-columns: 33% 33% 33% ;
-    border:2px solid #CBDB44;
     text-align: center;
-    background-color: #6c6b6b;
     margin-left: auto;
     margin-right: auto;
     overflow-y: scroll;
-    height:50%;
-    padding-top: 5em;
+    padding-top: 1em;
 }
 
 .eachTech {
@@ -60,8 +78,8 @@
 
 
 .techImg:hover {
-    height: 240px;
-    width: 240px;
+    height: 200px;
+    width: 200px;
 }
 @media (min-width:1000px) {
     #techTitle {
