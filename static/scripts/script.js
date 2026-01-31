@@ -32,5 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
     })
+
+   const three_projects = Array.from(document.getElementsByClassName('projects')[0].children).filter((element,index) => index <= 2 )
+   console.log(document.getElementsByClassName('projects')[0].children)
+   console.log(three_projects, '___')
+   document.getElementsByClassName('projects')[0].replaceChildren()
+   three_projects.forEach((each_child) => {
+        document.getElementsByClassName('projects')[0].appendChild(each_child)
+   })
+    
+
 })
 

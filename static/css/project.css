@@ -114,7 +114,7 @@
     padding: 2em;
     background: #82A8B8;
     background: radial-gradient(circle,rgb(82, 145, 172) 46%, rgb(164, 164, 66) 92%);
-    height: 10em;
+    height: 12em;
     width: 15em;
 }
 
@@ -143,7 +143,10 @@
     }
 
     .projects > div {
-        width: 25em;
+        width: 25%;
+        overflow: scroll;
+        overflow-y: hidden;
+        overflow-x: hidden;
     }
 }
 
