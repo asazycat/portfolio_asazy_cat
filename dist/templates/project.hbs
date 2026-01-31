@@ -27,12 +27,18 @@
             {{/each}}
         </div>
     </div>
-    <div>
-        {{#each project_list}}
-        <div>
-            <h1>{{this.project_name}}</h1>
-            <a href={{this.github_link}}>Hosted Site</a>
+    <div  class="projects_parent">
+        <div class="projects">
+            {{#each project_list}}
+            <div>
+                <h1>{{this.project_name}}</h1>
+                <p>{{this.project_desc}}</p>
+                <div>
+                    <a href={{this.github_link}}>Hosted Site</a>
+                    <a href={{this.hosted_link}}>Github Site</a>
+                </div>
+            </div>
+            {{/each}}
         </div>
-        {{/each}}
     </div>
 </div>
