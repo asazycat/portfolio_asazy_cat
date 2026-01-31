@@ -9,7 +9,7 @@ export function renderMain(data: any, res: Response) {
 
 export function renderProject (data: any, res: Response) {
    const [data1, data2] = data
-    res.render('project', {layout: 'index', tech_list: data1[0], project_list: data2[0]})
+   res.render('project', {layout: 'index', tech_list: data1[0], project_list: data2[0]})
 }
 
 
