@@ -23,7 +23,7 @@ export  async function getProjectModal2() {
           p.*,
         GROUP_CONCAT(pt.tech_item_name ORDER BY pt.tech_item_name SEPARATOR ', ') AS technologies
           FROM Projects p
-        LEFT JOIN Project_tech_list pt
+        LEFT JOIN Project_Tech_list pt
           ON p.project_id = pt.project_id
         GROUP BY p.project_id, p.project_name;
       `).then((res) => res).catch((err) => err)
