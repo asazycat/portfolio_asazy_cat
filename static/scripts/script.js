@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementsByTagName('nav')[0];
     const burgerButton = document.getElementById('burgerMenu');
+    const allProjectsCount = document.getElementsByClassName('projects')[0].children.length;
+    console.log(allProjectsCount)
     burgerButton.addEventListener('click', () => {
         nav.style.display === 'block' ? nav.style.display = 'none' : nav.style.display = 'block'
     })
@@ -33,14 +35,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
 
-   const three_projects = Array.from(document.getElementsByClassName('projects')[0].children).filter((element,index) => index <= 2 )
+   show3items(0,2)
+
+   for (let i = 0; i < Math.floor(allProjectsCount) / 3; i++) {
+        let button = document.createElement('button');
+        button.setAttribute('class', 'pageButton');
+        document.getElementById('slideButtons').appendChild(button)
+   }
+   
+   document.getElementById('slideButtons').addEventListener('click', (e) => {
+    const start = 2 * (Array.from(e.currentTarget.children).indexOf(e.target));
+    const end = 2 * (start + 1)
+    console.log(start, end)
+   })
+
+})
+
+function show3items(start, end) {
+    const three_projects = Array.from(document.getElementsByClassName('projects')[0].children).filter((element,index) => index >= start && index <= end )
    console.log(document.getElementsByClassName('projects')[0].children)
    console.log(three_projects, '___')
    document.getElementsByClassName('projects')[0].replaceChildren()
    three_projects.forEach((each_child) => {
         document.getElementsByClassName('projects')[0].appendChild(each_child)
-   })
-    
-
-})
-
+   });
+}

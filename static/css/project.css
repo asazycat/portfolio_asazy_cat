@@ -118,6 +118,10 @@
     width: 15em;
 }
 
+#slideButtons {
+        display: none;
+}
+
 @media (min-width:1000px) {
     #techTitle {
         display:block;
@@ -132,6 +136,7 @@
     .projects_parent {
         margin-top: 1%;
         flex-direction: row;
+        flex-direction: column;
         height: 100%;
         padding: 2em;
     }
@@ -148,10 +153,31 @@
         overflow-y: hidden;
         overflow-x: hidden;
     }
+
+    #slideButtons {
+        border-radius: 1em;
+        display: flex;
+        margin-top: 1%;
+        width:auto;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: space-around;
+    }
+
+    #slideButtons > button {
+        margin:2em;
+        border: 2px solid #CBDB44;
+        padding: 0.5em;
+        border-radius: 2em;
+    }
 }
 
 
 @media (max-width:1000px) {
+    #slideButtons {
+        display: none;
+    }
     #techTitle {
         display:none;
     }
