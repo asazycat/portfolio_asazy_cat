@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementsByTagName('nav')[0];
     const burgerButton = document.getElementById('burgerMenu');
-    const allProjects = document.getElementsByClassName('projects')[0].children;
+    let allProjects = document.getElementsByClassName('projects')[0].children;
     const allProjectsSpread = [...allProjects];
     const allProjectsCount = document.getElementsByClassName('projects')[0].children.length;
     const programmingLanguages = document.getElementsByClassName('programmingLanguages')[0];
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     programmingLanguages.addEventListener('click', (e) => {
-        if(e.target.className === 'techImg') {
+         if(e.target.className === 'techImg') {
         e.target.classList.remove('techImg');
         e.target.classList.add('techImg_selected');
        } else if (e.target.className === 'techImg_selected') {
@@ -60,8 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
        });
        document.getElementsByClassName('projects')[0].replaceChildren()
        filteredProjects.forEach((eachPro) => {
+
         if(eachPro !== undefined) document.getElementsByClassName('projects')[0].appendChild(eachPro)
        })
+       
+       allProjects = document.getElementsByClassName('projects')[0];
     });
 
     webDevelopment.addEventListener('click', (e) => {
@@ -89,6 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(eachPro !== undefined) document.getElementsByClassName('projects')[0].appendChild(eachPro)
        })
+       
+       allProjects = document.getElementsByClassName('projects')[0];
     })
 
    show3items(0,2,[...allProjects])
@@ -103,7 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if(Array.from(e.currentTarget.children).indexOf(e.target) >= 0) {
         const start = 3 * (Array.from(e.currentTarget.children).indexOf(e.target));
         const end = start + 2;
-        show3items(start,end,[...allProjectsSpread])
+        console.log(allProjects)
+        show3items(start,end,[...allProjects])
     }
    });
 
