@@ -42,6 +42,14 @@ nav {
     background-color: #a2a951;
 }
 
+#burgerStatment {
+    color: #ecede7;
+    width: 80%;
+    text-align: right;
+    margin: auto;
+    font-size: 1.5em;
+    font-family: 'Orbitron';
+}
 
 a {
     text-decoration: none;
