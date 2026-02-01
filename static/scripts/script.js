@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(Array.from(e.currentTarget.children).indexOf(e.target) >= 0) {
         const start = 3 * (Array.from(e.currentTarget.children).indexOf(e.target));
         const end = start + 2;
-        show3items(start,end,allProjectsSpread  )
+        show3items(start,end,filteredProjects  )
     }
    });
 
