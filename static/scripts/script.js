@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const allProjectsCount = document.getElementsByClassName('projects')[0].children.length;
     const programmingLanguages = document.getElementsByClassName('programmingLanguages')[0];
     const webDevelopment = document.getElementsByClassName('webDevelopment')[0];
-    let filteredProjects = []
+    let filteredProjects = [];
     let filterTags = [];
+
     burgerButton.addEventListener('click', () => {
         nav.style.display === 'block' ? nav.style.display = 'none' : nav.style.display = 'block'
     })
@@ -89,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
        show3items(0,2,filteredProjects)
     })
 
-   show3items(0,2,allProjectsSpread)
 
    for (let i = 0; i < Math.floor(allProjectsCount) / 3; i++) {
         let button = document.createElement('button');
@@ -101,9 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if(Array.from(e.currentTarget.children).indexOf(e.target) >= 0) {
         const start = 3 * (Array.from(e.currentTarget.children).indexOf(e.target));
         const end = start + 2;
-        show3items(start,end,filteredProjects  )
+        show3items(start,end,filteredProjects.length > 0 ? filteredProjects : allProjectsSpread  )
     }
    });
+
+   show3items(0,2,allProjectsSpread)
 
 })
 
@@ -113,7 +115,7 @@ function show3items(start, end, HTMLCollection) {
      const three_projects = Array.from(HTMLCollection).filter((element,index) => index >= start && index <= end )
    document.getElementsByClassName('projects')[0].replaceChildren()
    three_projects.forEach((each_child) => {
-        document.getElementsByClassName('projects')[0].appendChild(each_child)
+        document.getElementsByClassName('projects')[0].prepend(each_child)
    });
  }
   

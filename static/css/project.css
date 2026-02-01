@@ -101,8 +101,6 @@
     display: flex;
     flex-direction:column;
     justify-content: space-around;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
     height: 100%;
 
@@ -154,7 +152,6 @@
 
     .projects_parent {
         margin-top: 1%;
-        flex-direction: row;
         flex-direction: column;
         height: 100%;
         padding: 2em;
@@ -163,7 +160,6 @@
     .projects {
         width: 100%;
         flex-direction: row;
-        justify-content: space-between;
     }
 
     .projects > div {
