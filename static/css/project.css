@@ -55,7 +55,7 @@
 .programmingLanguages, .webDevelopment {
     min-width:100%;
     display: grid;
-    grid-template-columns: 33% 33% 33% ;
+    grid-template-columns: 25% 25% 25% 25% ;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -73,6 +73,11 @@
 .techImg {
     height: 120px;
     width: 120px;
+}
+
+.techImg_selected {
+    height: 200px;
+    width: 200px;
 }
 
 

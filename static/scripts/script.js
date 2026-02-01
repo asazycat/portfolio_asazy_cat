@@ -3,8 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementsByTagName('nav')[0];
     const burgerButton = document.getElementById('burgerMenu');
     const allProjects = document.getElementsByClassName('projects')[0].children;
-    const all6 = [...allProjects];
+    const allProjectsSpread = [...allProjects];
     const allProjectsCount = document.getElementsByClassName('projects')[0].children.length;
+    const programmingLanguages = document.getElementsByClassName('programmingLanguages')[0];
+    const webDevelopment = document.getElementsByClassName('webDevelopment')[0];
+    let filterTags = [];
     burgerButton.addEventListener('click', () => {
         nav.style.display === 'block' ? nav.style.display = 'none' : nav.style.display = 'block'
     })
@@ -24,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         techType = techType[0].toLowerCase() + techType.substring(1)
         const techList = document.getElementsByClassName('techList')[0].children
         Array.from(techList).forEach((div) => {
-            console.log(div)
             if(div.className !== techType) {
                 div.style.display = 'none';
 
@@ -34,6 +36,59 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
 
+    });
+
+    programmingLanguages.addEventListener('click', (e) => {
+        if(e.target.className === 'techImg') {
+        e.target.classList.remove('techImg');
+        e.target.classList.add('techImg_selected');
+       } else if (e.target.className === 'techImg_selected') {
+            e.target.classList.remove('techImg_selected');
+            e.target.classList.add('techImg');
+       }
+       Array.from(e.target.parentElement.children).forEach((each_tech) => {
+            each_tech.className === 'techImg_selected' 
+            ? filterTags.push(each_tech.alt) 
+            : filterTags = filterTags.filter((ele) => ele !== each_tech.alt)
+            
+       });
+       const filteredProjects = allProjectsSpread.map((eachPro) => {
+        const eachProTechList = eachPro.children[1].textContent.split(', ')
+         for (let i = 0; i < filterTags.length; i++) {
+            if(eachProTechList.includes(filterTags[i])) return eachPro
+         }
+       });
+       document.getElementsByClassName('projects')[0].replaceChildren()
+       filteredProjects.forEach((eachPro) => {
+        if(eachPro !== undefined) document.getElementsByClassName('projects')[0].appendChild(eachPro)
+       })
+    });
+
+    webDevelopment.addEventListener('click', (e) => {
+       if(e.target.className === 'techImg') {
+        e.target.classList.remove('techImg');
+        e.target.classList.add('techImg_selected');
+       } else if (e.target.className === 'techImg_selected') {
+            e.target.classList.remove('techImg_selected');
+            e.target.classList.add('techImg');
+       }
+       Array.from(e.target.parentElement.children).forEach((each_tech) => {
+            each_tech.className === 'techImg_selected' 
+            ? filterTags.push(each_tech.alt) 
+            : filterTags = filterTags.filter((ele) => ele !== each_tech.alt)
+            
+       });
+       const filteredProjects = allProjectsSpread.map((eachPro) => {
+        const eachProTechList = eachPro.children[1].textContent.split(', ')
+         for (let i = 0; i < filterTags.length; i++) {
+            if(eachProTechList.includes(filterTags[i])) return eachPro
+         }
+       });
+       document.getElementsByClassName('projects')[0].replaceChildren()
+       filteredProjects.forEach((eachPro) => {
+
+        if(eachPro !== undefined) document.getElementsByClassName('projects')[0].appendChild(eachPro)
+       })
     })
 
    show3items(0,2,[...allProjects])
@@ -48,16 +103,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if(Array.from(e.currentTarget.children).indexOf(e.target) >= 0) {
         const start = 3 * (Array.from(e.currentTarget.children).indexOf(e.target));
         const end = start + 2;
-        show3items(start,end,[...all6])
+        show3items(start,end,[...allProjectsSpread])
     }
-   })
+   });
 
 })
 
 function show3items(start, end, HTMLCollection) {
-    console.log(start,end)
-    const three_projects = Array.from(HTMLCollection).filter((element,index) => index >= start && index <= end )
-    
+   const three_projects = Array.from(HTMLCollection).filter((element,index) => index >= start && index <= end )
    document.getElementsByClassName('projects')[0].replaceChildren()
    three_projects.forEach((each_child) => {
         document.getElementsByClassName('projects')[0].appendChild(each_child)
