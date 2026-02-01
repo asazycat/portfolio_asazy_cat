@@ -2,11 +2,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementsByTagName('nav')[0];
     const burgerButton = document.getElementById('burgerMenu');
-    let allProjects = document.getElementsByClassName('projects')[0].children;
+    const allProjects = document.getElementsByClassName('projects')[0].children;
     const allProjectsSpread = [...allProjects];
     const allProjectsCount = document.getElementsByClassName('projects')[0].children.length;
     const programmingLanguages = document.getElementsByClassName('programmingLanguages')[0];
     const webDevelopment = document.getElementsByClassName('webDevelopment')[0];
+    let filteredProjects = []
     let filterTags = [];
     burgerButton.addEventListener('click', () => {
         nav.style.display === 'block' ? nav.style.display = 'none' : nav.style.display = 'block'
@@ -39,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     programmingLanguages.addEventListener('click', (e) => {
-         if(e.target.className === 'techImg') {
+        if(e.target.className === 'techImg') {
         e.target.classList.remove('techImg');
         e.target.classList.add('techImg_selected');
        } else if (e.target.className === 'techImg_selected') {
@@ -52,19 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
             : filterTags = filterTags.filter((ele) => ele !== each_tech.alt)
             
        });
-       const filteredProjects = allProjectsSpread.map((eachPro) => {
+        filteredProjects = allProjectsSpread.filter((eachPro) => {
         const eachProTechList = eachPro.children[1].textContent.split(', ')
          for (let i = 0; i < filterTags.length; i++) {
             if(eachProTechList.includes(filterTags[i])) return eachPro
          }
        });
        document.getElementsByClassName('projects')[0].replaceChildren()
-       filteredProjects.forEach((eachPro) => {
-
-        if(eachPro !== undefined) document.getElementsByClassName('projects')[0].appendChild(eachPro)
-       })
-       
-       allProjects = document.getElementsByClassName('projects')[0];
+       filteredProjects.forEach((eachPro) => document.getElementsByClassName('projects')[0].prepend(eachPro))
+       show3items(0,2,filteredProjects)
     });
 
     webDevelopment.addEventListener('click', (e) => {
@@ -81,44 +78,43 @@ document.addEventListener('DOMContentLoaded', () => {
             : filterTags = filterTags.filter((ele) => ele !== each_tech.alt)
             
        });
-       const filteredProjects = allProjectsSpread.map((eachPro) => {
+        filteredProjects = allProjectsSpread.filter((eachPro) => {
         const eachProTechList = eachPro.children[1].textContent.split(', ')
          for (let i = 0; i < filterTags.length; i++) {
             if(eachProTechList.includes(filterTags[i])) return eachPro
          }
        });
        document.getElementsByClassName('projects')[0].replaceChildren()
-       filteredProjects.forEach((eachPro) => {
-
-        if(eachPro !== undefined) document.getElementsByClassName('projects')[0].appendChild(eachPro)
-       })
-       
-       allProjects = document.getElementsByClassName('projects')[0];
+       filteredProjects.forEach((eachPro) => document.getElementsByClassName('projects')[0].prepend(eachPro))
+       show3items(0,2,filteredProjects)
     })
 
-   show3items(0,2,[...allProjects])
+   show3items(0,2,allProjectsSpread)
 
    for (let i = 0; i < Math.floor(allProjectsCount) / 3; i++) {
         let button = document.createElement('button');
         button.setAttribute('class', 'pageButton');
-        document.getElementById('slideButtons').appendChild(button)
+        document.getElementById('slideButtons').prepend(button)
    }
    
    document.getElementById('slideButtons').addEventListener('click', (e) => {
     if(Array.from(e.currentTarget.children).indexOf(e.target) >= 0) {
         const start = 3 * (Array.from(e.currentTarget.children).indexOf(e.target));
         const end = start + 2;
-        console.log(allProjects)
-        show3items(start,end,[...allProjects])
+        show3items(start,end,allProjectsSpread  )
     }
    });
 
 })
 
 function show3items(start, end, HTMLCollection) {
-   const three_projects = Array.from(HTMLCollection).filter((element,index) => index >= start && index <= end )
+    console.log(HTMLCollection)
+ if (HTMLCollection.length > 3) {
+     const three_projects = Array.from(HTMLCollection).filter((element,index) => index >= start && index <= end )
    document.getElementsByClassName('projects')[0].replaceChildren()
    three_projects.forEach((each_child) => {
         document.getElementsByClassName('projects')[0].appendChild(each_child)
    });
+ }
+  
 }
