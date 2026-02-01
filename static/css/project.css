@@ -103,6 +103,8 @@
     justify-content: space-around;
     text-align: center;
     height: 100%;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -158,6 +160,8 @@
     }
 
     .projects {
+        margin-left: auto;
+        margin-right: auto;
         width: 100%;
         flex-direction: row;
     }
