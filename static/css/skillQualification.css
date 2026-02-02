@@ -1,3 +1,15 @@
+
+#EditStatement {
+
+    color: #ecede7;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    font-family: 'Orbitron';
+    margin-top: 1%;
+}
+
+
 .qualifications {
     display: flex;
     flex-direction: column;
@@ -73,14 +85,12 @@
 
 @media (min-width:1000px) {
     .qualifications {
-     border: 2px solid grey;
      display: flex;
      flex-direction: row;
      justify-content:space-around; 
    }
 
    .listOfQualifications {
-    border: 2px solid green;
    }
 
 .qualifications > div {
@@ -111,7 +121,8 @@
 }
 
 .topics {
-   
+   height:0;
+   overflow: hidden;
 }
 
 .eachTopic {
@@ -121,7 +132,6 @@
 .qualificationsDetails {
     display: block;
     width: 50%;
-    border: 2px solid blue;
 }
 }
 

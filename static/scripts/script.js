@@ -18,9 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.display = 'flex';
             nav.style.flexDirection = 'row';
             // nav.style.justifyContent = 'space-around'
+            document.getElementsByClassName('qualificationsDetails')[0].style.display = 'block'
 
         } else {
             nav.style.display = 'none'
+            document.getElementsByClassName('qualificationsDetails')[0].style.display = 'none'
         }
     })
 
@@ -117,10 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
        for(let j =0; j < replaceArray.length; j++) {
             document.getElementsByClassName('topics')[i].append(replaceArray[j])
        }
-    console.log(document.getElementsByClassName('show'))
+
     for (let i = 0; i < document.getElementsByClassName('show').length; i++) {
          document.getElementsByClassName('show')[i].addEventListener('click',(e) => {
-            console.log(e.target.parentElement.nextElementSibling)
             if(e.target.parentElement.nextElementSibling.style.display === 'none') {
                 e.target.parentElement.nextElementSibling.style.display = 'grid';
                 e.target.textContent = 'Show Less';
@@ -129,11 +130,19 @@ document.addEventListener('DOMContentLoaded', () => {
             } else { 
                 e.target.parentElement.nextElementSibling.style.display = 'none';
                 e.target.textContent = 'Show More';
+                e.target.style.color ='black'
                 e.target.style.backgroundColor = '';
             }
             e.stopImmediatePropagation()
         })
     }
+
+    document.getElementsByClassName('qualifications')[0].addEventListener('click',(e) => {
+         e.stopImmediatePropagation();
+        console.log(e.target.lastChild)
+        document.getElementsByClassName('qualificationsDetails')[0].children[0].textContent = `${e.target.textContent}`
+       
+    })
    
 
    }
