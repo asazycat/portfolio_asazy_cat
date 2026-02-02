@@ -1,10 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const nav = document.getElementsByTagName('nav')[0];
+    const nav = document?.getElementsByTagName('nav')[0];
     const burgerButton = document.getElementById('burgerMenu');
-    const allProjects = document.getElementsByClassName('projects')[0].children;
+    const allProjects = document.getElementsByClassName('projects')[0]?.children ?? [];
     const allProjectsSpread = [...allProjects];
-    const allProjectsCount = document.getElementsByClassName('projects')[0].children.length;
+    const allProjectsCount = document.getElementsByClassName('projects')[0]?.children.length;
     const programmingLanguages = document.getElementsByClassName('programmingLanguages')[0];
     const webDevelopment = document.getElementsByClassName('webDevelopment')[0];
     let filteredProjects = [];
@@ -54,12 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
             : filterTags = filterTags.filter((ele) => ele !== each_tech.alt)
             
        });
-        filteredProjects = allProjectsSpread.filter((eachPro) => {
+        filteredProjects = filterTags.length !== 0 ? allProjectsSpread.filter((eachPro) => {
         const eachProTechList = eachPro.children[1].textContent.split(', ')
          for (let i = 0; i < filterTags.length; i++) {
             if(eachProTechList.includes(filterTags[i])) return eachPro
          }
-       });
+       }) : allProjectsSpread;
        document.getElementsByClassName('projects')[0].replaceChildren()
        filteredProjects.forEach((eachPro) => document.getElementsByClassName('projects')[0].prepend(eachPro))
        show3items(0,2,filteredProjects)
@@ -79,12 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
             : filterTags = filterTags.filter((ele) => ele !== each_tech.alt)
             
        });
-        filteredProjects = allProjectsSpread.filter((eachPro) => {
+        filteredProjects = filterTags.length !== 0 ? allProjectsSpread.filter((eachPro) => {
         const eachProTechList = eachPro.children[1].textContent.split(', ')
          for (let i = 0; i < filterTags.length; i++) {
             if(eachProTechList.includes(filterTags[i])) return eachPro
          }
-       });
+       }) : allProjectsSpread;
        document.getElementsByClassName('projects')[0].replaceChildren()
        filteredProjects.forEach((eachPro) => document.getElementsByClassName('projects')[0].prepend(eachPro))
        show3items(0,2,filteredProjects)
@@ -110,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function show3items(start, end, HTMLCollection) {
-    console.log(HTMLCollection)
  if (HTMLCollection.length > 3) {
      const three_projects = Array.from(HTMLCollection).filter((element,index) => index >= start && index <= end )
    document.getElementsByClassName('projects')[0].replaceChildren()
