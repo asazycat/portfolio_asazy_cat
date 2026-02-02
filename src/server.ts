@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from 'dotenv';
 import {create}  from 'express-handlebars';
 import type {Express} from "express"
-import { TechType } from "./helpers";
+import { TechType, TopicArr } from "./helpers";
 
 dotenv.config()
 const port = process.env.MYSQLPORT || 5000;
@@ -12,7 +12,8 @@ const hbs = create({
     layoutsDir: __dirname + '/templates/layouts',
     extname: 'hbs',
     helpers: {
-        TechType
+        TechType,
+        TopicArr
     }
     }
 );

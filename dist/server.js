@@ -15,7 +15,8 @@ const hbs = (0, express_handlebars_1.create)({
     layoutsDir: __dirname + '/templates/layouts',
     extname: 'hbs',
     helpers: {
-        TechType: helpers_1.TechType
+        TechType: helpers_1.TechType,
+        TopicArr: helpers_1.TopicArr
     }
 });
 const expressApp = (0, express_1.default)();

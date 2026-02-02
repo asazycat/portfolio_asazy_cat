@@ -1,0 +1,69 @@
+.qualifications {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+
+.qualifications > div {
+    height: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+
+.eachQualification {
+    margin: 5%;
+    border-radius: 5em;
+    padding: 2em;
+    background: radial-gradient(circle,rgb(82, 145, 172) 46%, rgb(164, 164, 66) 92%);
+}
+.eachQualification > h1 {
+    font-family: 'Orbitron';
+    font-size: 1.5em;
+}
+.eachQualification > div {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.show_layout {
+    width: 100%;
+    text-align:left ;
+    margin: 2%;
+}
+
+.show {
+    font-family: 'Orbitron';
+    font-size: 0.85em;
+    border-radius: 5em;
+    border:1px solid black;
+}
+
+.topics {
+    gap:2%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    list-style-type:none ;
+    margin: 0;
+    padding:0;
+    width: auto;
+    font-family: 'Orbitron';
+}
+
+.eachTopic {
+    width: 8em;
+    font-size: 0.85em;
+    padding: 0.5em;
+    color: aliceblue;
+    border-radius: 5em;
+    background-color: rgba(158, 195, 73, 0.83);
+
+}
+

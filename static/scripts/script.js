@@ -24,10 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    document.getElementsByClassName('techType')[0].addEventListener('click', (e) => {
+    ////////////////////////
+
+    document.getElementsByClassName('techType')[0]?.addEventListener('click', (e) => {
         let techType = e.target.textContent.split(' ').join('')
         techType = techType[0].toLowerCase() + techType.substring(1)
-        const techList = document.getElementsByClassName('techList')[0].children
+        const techList = document.getElementsByClassName('techList')[0]?.children
         Array.from(techList).forEach((div) => {
             if(div.className !== techType) {
                 div.style.display = 'none';
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    programmingLanguages.addEventListener('click', (e) => {
+    programmingLanguages?.addEventListener('click', (e) => {
         if(e.target.className === 'techImg') {
         e.target.classList.remove('techImg');
         e.target.classList.add('techImg_selected');
@@ -60,12 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if(eachProTechList.includes(filterTags[i])) return eachPro
          }
        }) : allProjectsSpread;
-       document.getElementsByClassName('projects')[0].replaceChildren()
+       document.getElementsByClassName('projects')[0]?.replaceChildren()
        filteredProjects.forEach((eachPro) => document.getElementsByClassName('projects')[0].prepend(eachPro))
        show3items(0,2,filteredProjects)
     });
 
-    webDevelopment.addEventListener('click', (e) => {
+    webDevelopment?.addEventListener('click', (e) => {
        if(e.target.className === 'techImg') {
         e.target.classList.remove('techImg');
         e.target.classList.add('techImg_selected');
@@ -85,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(eachProTechList.includes(filterTags[i])) return eachPro
          }
        }) : allProjectsSpread;
-       document.getElementsByClassName('projects')[0].replaceChildren()
+       document.getElementsByClassName('projects')[0]?.replaceChildren()
        filteredProjects.forEach((eachPro) => document.getElementsByClassName('projects')[0].prepend(eachPro))
        show3items(0,2,filteredProjects)
     })
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('slideButtons').prepend(button)
    }
    
-   document.getElementById('slideButtons').addEventListener('click', (e) => {
+   document.getElementById('slideButtons')?.addEventListener('click', (e) => {
     if(Array.from(e.currentTarget.children).indexOf(e.target) >= 0) {
         const start = 3 * (Array.from(e.currentTarget.children).indexOf(e.target));
         const end = start + 2;
@@ -105,7 +107,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
    });
 
-   show3items(0,2,allProjectsSpread)
+   show3items(0,2,allProjectsSpread);
+
+   ///////////
+
+   for (let i =0 ; i < document.getElementsByClassName('topics').length; i++) {
+       const replaceArray = Array.from(document.getElementsByClassName('topics')[i].childNodes).filter((ele) =>  ele.nodeName != '#text')
+         document.getElementsByClassName('topics')[i].replaceChildren()
+       for(let j =0; j < replaceArray.length; j++) {
+            document.getElementsByClassName('topics')[i].append(replaceArray[j])
+       }
+    console.log(document.getElementsByClassName('show'))
+    for (let i = 0; i < document.getElementsByClassName('show').length; i++) {
+         document.getElementsByClassName('show')[i].addEventListener('click',(e) => {
+            console.log(e.target.parentElement.nextElementSibling)
+            if(e.target.parentElement.nextElementSibling.style.display === 'none') {
+                e.target.parentElement.nextElementSibling.style.display = 'grid';
+                e.target.textContent = 'Show Less';
+                e.target.style.backgroundColor = 'grey' 
+                e.target.style.color ='rgba(158, 195, 73, 0.83)'
+            } else { 
+                e.target.parentElement.nextElementSibling.style.display = 'none';
+                e.target.textContent = 'Show More';
+                e.target.style.backgroundColor = '';
+            }
+            e.stopImmediatePropagation()
+        })
+    }
+   
+
+   }
+
 
 })
 

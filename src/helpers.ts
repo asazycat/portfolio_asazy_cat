@@ -22,3 +22,8 @@ export function TechType(filter: string, obj: {
         //For future development with later projects in Python, C++ and Java - among other engineering software//
     }
 }
+
+
+export function TopicArr (para: any) {
+   return para.split(', ').map((eachTop: string) => `<li class='eachTopic'>${eachTop}</li>`)
+}
