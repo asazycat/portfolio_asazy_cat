@@ -35,7 +35,7 @@
     padding: 2em;
     background: radial-gradient(circle,rgb(82, 145, 172) 46%, rgb(164, 164, 66) 92%);
 }
-.eachQualification > h1 {
+.qual_name {
     font-family: 'Orbitron';
     font-size: 1.5em;
 }

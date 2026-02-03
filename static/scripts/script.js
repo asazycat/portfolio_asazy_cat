@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.display = 'flex';
             nav.style.flexDirection = 'row';
             // nav.style.justifyContent = 'space-around'
-            document.getElementsByClassName('qualificationsDetails')[0].style.display = 'block'
+            // document.getElementsByClassName('qualificationsDetails')[0]?.style.display = 'block'
 
         } else {
             nav.style.display = 'none'
-            document.getElementsByClassName('qualificationsDetails')[0].style.display = 'none'
+            // document.getElementsByClassName('qualificationsDetails')[0]?.style.display = 'none'
         }
     })
 
