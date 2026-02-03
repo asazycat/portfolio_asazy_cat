@@ -18,11 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.display = 'flex';
             nav.style.flexDirection = 'row';
             // nav.style.justifyContent = 'space-around'
-            // document.getElementsByClassName('qualificationsDetails')[0]?.style.display = 'block'
+           const qualDetails = document.getElementsByClassName('qualificationsDetails')[0]
+           console.log(qualDetails)
+           qualDetails.style.display = 'block'
 
         } else {
             nav.style.display = 'none'
-            // document.getElementsByClassName('qualificationsDetails')[0]?.style.display = 'none'
+            const qualDetails = document.getElementsByClassName('qualificationsDetails')[0]
+            console.log(qualDetails)
+           qualDetails.style.display = 'none'
         }
     })
 
