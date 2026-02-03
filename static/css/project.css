@@ -105,21 +105,20 @@
     height: 100%;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .projects > div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 1em;
+    font-size: 0.65em;
     font-family: 'Orbitron';
     border-radius: 2em;
     padding: 2em;
     background: #82A8B8;
     background: radial-gradient(circle,rgb(82, 145, 172) 46%, rgb(164, 164, 66) 92%);
-    height: 12em;
-    width: 15em;
+    height: auto;
+    width: auto;
 }
 
 #slideButtons {
@@ -164,6 +163,7 @@
         margin-right: auto;
         width: 100%;
         flex-direction: row;
+       
     }
 
     .projects > div {
