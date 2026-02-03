@@ -1,0 +1,50 @@
+
+.Profile, .Experience {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid grey;
+    width: 80%;
+    margin-left:auto;
+    margin-right:auto;
+    padding:2em;
+    margin-top: 5%;
+    border-radius: 5em;
+    background: radial-gradient(circle,rgb(82, 145, 172) 46%, rgb(164, 164, 66) 92%);
+}
+
+.left_profile_part {
+    margin-top:auto;
+    margin-bottom:auto;
+    color: #ecede7;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Orbitron';
+}
+
+.profile_image {
+    height:150px;
+    width:150px
+}
+
+.Experience {
+    
+} 
+
+
+@media (min-width:1000px) {
+
+    .Profile {
+        margin-top: 0;
+        justify-content: space-around;
+    }
+
+    .left_profile_part {
+        font-size: 3em;
+    }
+
+    .profile_image {
+    height:300px;
+    width:300px;
+    }
+
+ }
