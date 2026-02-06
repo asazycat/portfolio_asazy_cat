@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const nav = document?.getElementsByTagName('nav')[0];
+    const nav = document.getElementsByTagName('nav')[0];
     const burgerButton = document.getElementById('burgerMenu');
     const allProjects = document.getElementsByClassName('projects')[0]?.children ?? [];
     const allProjectsSpread = [...allProjects];
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.display = 'none'
             const qualDetails = document.getElementsByClassName('qualificationsDetails')[0]
             console.log(qualDetails)
-           qualDetails.style.display = 'none'
+            qualDetails.style.display = 'none'
         }
     })
 
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : filterTags = filterTags.filter((ele) => ele !== each_tech.alt)
             
        });
-        filteredProjects = filterTags.length !== 0 ? allProjectsSpread.filter((eachPro) => {
+        filteredProjects = filterTags.length !== 0 ? allProjectsSpread?.filter((eachPro) => {
         const eachProTechList = eachPro.children[1].textContent.split(', ')
          for (let i = 0; i < filterTags.length; i++) {
             if(eachProTechList.includes(filterTags[i])) return eachPro
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : filterTags = filterTags.filter((ele) => ele !== each_tech.alt)
             
        });
-        filteredProjects = filterTags.length !== 0 ? allProjectsSpread.filter((eachPro) => {
+        filteredProjects = filterTags.length !== 0 ? allProjectsSpread?.filter((eachPro) => {
         const eachProTechList = eachPro.children[1].textContent.split(', ')
          for (let i = 0; i < filterTags.length; i++) {
             if(eachProTechList.includes(filterTags[i])) return eachPro
@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
    for (let i = 0; i < Math.floor(allProjectsCount) / 3; i++) {
         let button = document.createElement('button');
-        button.setAttribute('class', 'pageButton');
-        document.getElementById('slideButtons').prepend(button)
+        button?.setAttribute('class', 'pageButton');
+        document.getElementById('slideButtons')?.prepend(button)
    }
    
    document.getElementById('slideButtons')?.addEventListener('click', (e) => {
@@ -119,13 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
    for (let i =0 ; i < document.getElementsByClassName('topics').length; i++) {
        const replaceArray = Array.from(document.getElementsByClassName('topics')[i].childNodes).filter((ele) =>  ele.nodeName != '#text')
-         document.getElementsByClassName('topics')[i].replaceChildren()
+         document.getElementsByClassName('topics')[i]?.replaceChildren()
        for(let j =0; j < replaceArray.length; j++) {
-            document.getElementsByClassName('topics')[i].append(replaceArray[j])
+            document.getElementsByClassName('topics')[i]?.append(replaceArray[j])
        }
 
     for (let i = 0; i < document.getElementsByClassName('show').length; i++) {
-         document.getElementsByClassName('show')[i].addEventListener('click',(e) => {
+         document.getElementsByClassName('show')[i]?.addEventListener('click',(e) => {
             if(e.target.parentElement.nextElementSibling.style.display === 'none') {
                 e.target.parentElement.nextElementSibling.style.display = 'grid';
                 e.target.textContent = 'Show Less';
@@ -141,9 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    document.getElementsByClassName('qualifications')[0].addEventListener('click',(e) => {
+    document.getElementsByClassName('qualifications')[0]?.addEventListener('click',(e) => {
          e.stopImmediatePropagation();
-        console.log(e.target.lastChild)
         document.getElementsByClassName('qualificationsDetails')[0].children[0].textContent = `${e.target.textContent}`
        
     })
@@ -157,9 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function show3items(start, end, HTMLCollection) {
  if (HTMLCollection.length > 3) {
      const three_projects = Array.from(HTMLCollection).filter((element,index) => index >= start && index <= end )
-   document.getElementsByClassName('projects')[0].replaceChildren()
+   document.getElementsByClassName('projects')[0]?.replaceChildren()
    three_projects.forEach((each_child) => {
-        document.getElementsByClassName('projects')[0].prepend(each_child)
+        document.getElementsByClassName('projects')[0]?.prepend(each_child)
    });
  }
   
