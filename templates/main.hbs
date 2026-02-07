@@ -1,21 +1,41 @@
 <div class="Profile">
     <div class="left_profile_part">
-        <p>Hello, my name is Asad Jawaid.</p>
-        <p>I am a Web Developer.</p>
-        <p style="color:rgb(61, 211, 61); font-size:0.5em;">(Portfolio Page is a Work in Progress - Oops!)</p> 
+        <p>Welcome to my Portfolio</p>
+        <p>I'm Asad Jawaid</p>
+        <p style="color:rgb(61, 211, 61); font-size:0.5em; width:70%">
+          A Frontend Web Developer building robust, user-friendly web applications with a strong focus on architecture, security, and testing. I thrive on problem-solving and bringing real quality to products.
+        </p> 
     </div>
     <div class="right_profile_part">
         <img src="./placeholderImg.png" alt="Asad" class="profile_image"/>
     </div>
 </div>
 
+<div class="Skills">
+    <h1>Skills</h1>
+    <ul class="skillList">
+        <li class="eachSkill">Full-Stack Web Development</li>
+        <li class="eachSkill">CMS Development </li>
+        <li class="eachSkill">Database Design &amp; ORMs</li>
+        <li class="eachSkill">MySQL / SQL Data Handling</li>
+        <li class="eachSkill">Git &amp; Version Control Workflows</li>
+        <li class="eachSkill">Test-Driven Development</li>
+        <li class="eachSkill">Agile &amp; Scrum Methodologies</li>
+        <li class="eachSkill">Component-Based Architecture</li>
+        <li class="eachSkill">CI/CD Principles</li>
+        <li class="eachSkill">Data Structures &amp; Algorithms</li>
+        <li class="eachSkill">REST API Integration</li>
+        <li class="eachSkill">Cloud-Hosted App Deployment</li>
+    </ul>
+</div>
+
 <div class="Experience">
     <h1>Experience</h1>
      {{#each experience}}
     <div class="exp_details">
-        <h1>{{this.company_name}}</h1>
+        <h1>{{this.company_name}} (<p>{{this.start_date}} - {{this.end_date}}</p>)</h1>
         <p>{{this.company_desc}}</p>
-        <p>{{this.start_date}} - {{this.end_date}}</p>
+        
     </div>
 
     {{/each}}

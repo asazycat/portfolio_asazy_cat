@@ -1,13 +1,14 @@
 
-.Profile, .Experience {
+.Profile, .Experience, .Skills {
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    flex-direction: row-reverse;
+    width: auto;
     margin-left:auto;
     margin-right:auto;
     padding:2em;
     margin-top: 5%;
     background: #1a495e;
+    justify-content: space-around;
 }
 
 .left_profile_part {
@@ -15,16 +16,19 @@
     margin-bottom:auto;
     color: #ecede7;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 0.86em;
     font-family: 'Orbitron';
+    width:50%;
 }
 
 .profile_image {
-    height:150px;
-    width:150px
+    height:100px;
+    width:100px;
+    border:2px solid grey;
+    border-radius: 10em;
 }
 
-.Experience {
+.Experience, .Skills {
     
     width:80%;
     background: transparent;
@@ -32,16 +36,39 @@
     flex-direction: column;
 } 
 
-.Experience > h1 {
+.Experience, .Skills > h1 {
      font-family: 'Orbitron';
 }
+
+
+
+.skillList {
+    gap:2%;
+    display: flex;
+    flex-direction: column;
+    list-style-type:none ;
+    margin: 0;
+    padding:0;
+    max-width: auto;
+    font-family: 'Orbitron';
+    overflow-y:scroll;
+    height:30vh; 
+}
+
+.eachSkill {
+    padding: 0.5em;
+    color: aliceblue;
+    border-radius: 1em;
+    background: #1a495e;
+
+}
+
 
 @media (min-width:1000px) {
 
     .Profile {
         margin-top: 0;
         justify-content: space-around;
-        opacity:0.7;
     }
 
     .left_profile_part {
@@ -55,10 +82,36 @@
 
     .exp_details {
         display:flex;
-        flex-direction: row;
+        flex-direction: column;
         width:100%;
         justify-content: space-around;
         background: #1a495e;
+        margin-top:2%;
+        padding: 1em;
     }
+
+    .skillList {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    list-style-type:none ;
+    margin: 0;
+    padding:0;
+    max-width: auto;
+    font-family: 'Orbitron';
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: hidden;
+    height:90vh;
+}  
+
+.eachSkill {
+    margin:auto;
+    width:70%;
+    padding: 2em;
+    text-align: center;
+}
+
+.eachSkill:hover {
+     color: #4497db;
+}
 
  }
