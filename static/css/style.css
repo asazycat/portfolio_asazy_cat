@@ -71,13 +71,14 @@ a:hover {
 
 @media (min-width: 1000px) {
     nav {
-        position: static;
+        position: sticky;
         flex-direction: row;
         justify-content: space-around;
         height: auto;
         width:auto;
+        height: 1em;
         background-color: transparent;
-        height: 5em;
+
     }
 
     nav > div {

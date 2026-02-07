@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let filterTags = [];
 
     burgerButton.addEventListener('click', () => {
+         e.stopImmediatePropagation()
         nav.style.display === 'block' ? nav.style.display = 'none' : nav.style.display = 'block'
     })
     window.addEventListener('resize', () => {
+         e.stopImmediatePropagation()
         if(window.innerWidth >= 1000) {
             nav.style.display = 'flex';
             nav.style.flexDirection = 'row';
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ////////////////////////
 
     document.getElementsByClassName('techType')[0]?.addEventListener('click', (e) => {
+         e.stopImmediatePropagation()
         let techType = e.target.textContent.split(' ').join('')
         techType = techType[0].toLowerCase() + techType.substring(1)
         const techList = document.getElementsByClassName('techList')[0]?.children
@@ -49,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     programmingLanguages?.addEventListener('click', (e) => {
+         e.stopImmediatePropagation()
         if(e.target.className === 'techImg') {
         e.target.classList.remove('techImg');
         e.target.classList.add('techImg_selected');
@@ -74,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     webDevelopment?.addEventListener('click', (e) => {
+         e.stopImmediatePropagation()
        if(e.target.className === 'techImg') {
         e.target.classList.remove('techImg');
         e.target.classList.add('techImg_selected');
@@ -151,11 +156,19 @@ document.addEventListener('DOMContentLoaded', () => {
    }
    
     document.getElementsByClassName('listOfQualifications')[0]?.addEventListener('click', (e) => {
+        e.stopImmediatePropagation()
         const cert_link = e.target.nextElementSibling.children[2].textContent
             document.getElementsByClassName('cert_img')[0]?.setAttribute('src', cert_link)
     })
     
-
+    document.getElementsByClassName('button_qualification')[0]?.addEventListener('click', (e) => {
+         e.stopImmediatePropagation()
+        alert(e.target.value)
+    })
+    
+    document.getElementsByClassName('cert_img')[0]?.addEventListener('click', (e) => {
+        e.stopPropagation()
+    })
 
 
 })

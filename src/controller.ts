@@ -8,7 +8,6 @@ export  async function getmainController(req: Request,res: Response) {
 
 }
 
-
 export async function getProjectController(req: Request, res: Response) {
     const data_item1 =  await getProjectModal()
     const data_item2 = await getProjectModal2();
