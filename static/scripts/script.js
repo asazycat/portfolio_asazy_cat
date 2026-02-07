@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.flexDirection = 'row';
             // nav.style.justifyContent = 'space-around'
            const qualDetails = document.getElementsByClassName('qualificationsDetails')[0]
-           console.log(qualDetails)
+          
            qualDetails.style.display = 'block'
 
         } else {
             nav.style.display = 'none'
             const qualDetails = document.getElementsByClassName('qualificationsDetails')[0]
-            console.log(qualDetails)
+           
             qualDetails.style.display = 'none'
         }
     })
@@ -147,8 +147,15 @@ document.addEventListener('DOMContentLoaded', () => {
        
     })
    
-
+    
    }
+   
+    document.getElementsByClassName('listOfQualifications')[0]?.addEventListener('click', (e) => {
+        const cert_link = e.target.nextElementSibling.children[2].textContent
+            document.getElementsByClassName('cert_img')[0]?.setAttribute('src', cert_link)
+    })
+    
+
 
 
 })

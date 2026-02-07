@@ -25,9 +25,16 @@
 }
 
 .Experience {
+    
     width:80%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
 } 
 
+.Experience > h1 {
+     font-family: 'Orbitron';
+}
 
 @media (min-width:1000px) {
 
@@ -44,6 +51,14 @@
     .profile_image {
     height:300px;
     width:300px;
+    }
+
+    .exp_details {
+        display:flex;
+        flex-direction: row;
+        width:100%;
+        justify-content: space-around;
+        background: #1a495e;
     }
 
  }

@@ -65,7 +65,7 @@
     list-style-type:none ;
     margin: 0;
     padding:0;
-    width: auto;
+    max-width: auto;
     font-family: 'Orbitron';
 }
 
@@ -74,8 +74,8 @@
     font-size: 0.65em;
     padding: 0.5em;
     color: aliceblue;
-    border-radius: 5em;
-    background-color: rgba(158, 195, 73, 0.83);
+    border-radius: 1em;
+    background: #1e688a;
 
 }
 
@@ -83,7 +83,19 @@
     display: none;
 }
 
+
+
 @media (min-width:1000px) {
+
+    #cert_link {
+        display:none;
+    }
+    .cert_img {
+        height:65%;
+        width:100%;
+        border:10px solid grey;
+        border-style: ridge;
+    }
     .qualifications {
      display: flex;
      flex-direction: row;
@@ -91,15 +103,18 @@
    }
 
    .listOfQualifications {
+    
    }
 
 .qualifications > div {
-   
+     width:100%;
 }
 
 
 .eachQualification {
-
+    height: auto;
+     border: 2px solid black;
+    
 }
 
 .eachQualification:hover {
@@ -113,7 +128,7 @@
 }
 
 .show_layout {
-    display: none;
+   
 }
 
 .show {
@@ -121,17 +136,16 @@
 }
 
 .topics {
-   height:0;
-   overflow: hidden;
+  
 }
 
 .eachTopic {
-   
+font-size:1em;
 }
 
 .qualificationsDetails {
     display: block;
-    width: 50%;
+    margin-right:2%;
 }
 }
 
