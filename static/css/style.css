@@ -7,8 +7,9 @@
 }
 
 body {
-    background: #82a8b8;
-    background: linear-gradient(90deg,rgba(130, 168, 184, 1) 0%, rgba(97, 97, 83, 1) 36%, rgba(171, 181, 85, 1) 95%);
+    background: #1a495e;
+    background: linear-gradient(90deg,rgb(24, 45, 54) 0%, rgb(63, 121, 116) 36%, rgb(15, 53, 88) 95%);
+    color:rgba(255, 255, 255, 0.815);
 }
 
 nav {
@@ -18,7 +19,7 @@ nav {
     justify-content: auto;
     width: 100%;
     height:100%;
-    background-color:#a2a951;
+    background-color:#1a495e;
     padding:2em;
     font-family: 'Orbitron';
 }
@@ -30,7 +31,7 @@ nav {
 } */
 
 .topNavPart {
-    background-color: #a2a951;
+    background-color: #1a495e;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -41,7 +42,7 @@ nav {
     border:0px;
     margin:0px;
     font-size: 1em;
-    background-color: #a2a951;
+    background-color: #1a495e;
 }
 
 #burgerStatment {
@@ -55,13 +56,12 @@ nav {
 
 a {
     text-decoration: none;
-    color: #ecede7;
+    color: rgba(255, 255, 255, 0.815);
     font-size: 1.5em;
 }
 
 a:hover {
-    color: #CBDB44;
-    font-size: 2em;
+    color: #4497db;
 }
 
 

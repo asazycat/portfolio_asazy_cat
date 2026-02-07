@@ -113,10 +113,10 @@
     justify-content: space-between;
     font-size: 0.65em;
     font-family: 'Orbitron';
-    border-radius: 2em;
     padding: 2em;
-    background: #82A8B8;
-    background: radial-gradient(circle,rgb(82, 145, 172) 46%, rgb(164, 164, 66) 92%);
+    color:rgba(255, 255, 255, 0.815);
+    background: linear-gradient(90deg,rgb(45, 81, 97) 0%, rgb(55, 95, 92) 36%, rgb(15, 53, 88) 95%);
+
     height: auto;
     width: auto;
 }
