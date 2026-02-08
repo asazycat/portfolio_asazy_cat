@@ -5,7 +5,7 @@
     width: 80%;
     text-align: center;
     margin: auto;
-    font-family: 'Orbitron';
+    font-family: 'Inter';
     margin-top: 1%;
 }
 
@@ -36,7 +36,7 @@
     background: linear-gradient(90deg,rgb(45, 81, 97) 0%, rgb(55, 95, 92) 36%, rgb(15, 53, 88) 95%);
 }
 .qual_name {
-    font-family: 'Orbitron';
+    font-family: 'Inter';
     font-size: 1.5em;
 }
 .eachQualification > div {
@@ -52,7 +52,7 @@
 }
 
 .show {
-    font-family: 'Orbitron';
+    font-family: 'Inter';
     font-size: 0.85em;
     border-radius: 5em;
     border:1px solid black;
@@ -66,7 +66,7 @@
     margin: 0;
     padding:0;
     max-width: auto;
-    font-family: 'Orbitron';
+    font-family: 'Inter';
 }
 
 .eachTopic {
@@ -132,11 +132,11 @@
 }
 
 .show {
-
+    display: none;
 }
 
 .topics {
-  
+  display:none;
 }
 
 .eachTopic {
@@ -158,11 +158,11 @@ font-size:1em;
 .each_button {
    
     background-color: #14242c;
-    font-family: 'Orbitron';
+    font-family: 'Inter';
     font-size: 1em;
     border: 2px solid black;
     color:#f9fbec;
-     background: linear-gradient(90deg,rgb(45, 81, 97) 0%, rgb(55, 95, 92) 36%, rgb(15, 53, 88) 95%);
+    background: linear-gradient(90deg,rgb(45, 81, 97) 0%, rgb(55, 95, 92) 36%, rgb(15, 53, 88) 95%);
 }
 
 }

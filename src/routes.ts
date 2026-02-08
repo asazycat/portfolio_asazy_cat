@@ -1,10 +1,11 @@
 import { Request, Response,Router } from "express";
-import { getContactController, getmainController, getProjectController, getSkillsQualificationsController } from "./controller";
+import { getContactController, getmainController, getProjectController, getSkillsController, getSkillsQualificationsController } from "./controller";
 
 const router = Router()
 
 router.get('/', (req: Request, res: Response) => {
     getmainController(req,res)
+    
 });
 
 

@@ -1,17 +1,22 @@
-<h1 id="EditStatement">Press Qualification for more details</h1>
+<h1 id="EditStatement">Select a qualification to view details</h1>
 <div class="qualifications">
     <div class="listOfQualifications">
     {{#each qualifications}}
     <div class="eachQualification" >
         <h1 class="qual_name">{{this.qual_name}}</h1>
         <div>
-        <div class="show_layout"><button class="show">Show More</button></div>
-            <ul class="topics" style="display: none;">
+        <div class="show_layout">
+            <button class="show">Show More</button>
+        </div>
+        <div class="show_content" style="display: none;">
+            <ul class="topics" >
                 {{#TopicArr this.topics}}
         
                 {{/TopicArr}}
             </ul>
-            <p style="display:none" id="cert_link">{{this.cert_img}}</p>
+            <a id="cert_link" href={{this.cert_img}}>Link to Certificate</a>
+            <p style="display:none">{{this.cert_img}}</p>
+        </div>
         </div>
     </div>
 
@@ -20,10 +25,11 @@
     <div class="qualificationsDetails">
         <div class="button_qualification">
             <button class="each_button">Certificate</button>
-            <button class="each_button">Contents</button>
             <button class="each_button">Description</button>
+            <button class="each_button">Contents</button>
         </div>
         <img src="https://certificates.dev/.netlify/images?url=https:%2F%2Fapi.certificates.dev%2Fcertificates%2Fthumbnail%2Fa07af103-d4bd-4f03-8133-feabc0dc2792.jpg" class="cert_img"/>
-        <p></p>
+        <p id="Description" style="display:none">Description To be Added</p>
+        <p id="Contents" style="display:none">Contents To be Added</p>
     </div>
 </div>

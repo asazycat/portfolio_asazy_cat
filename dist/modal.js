@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getMainModal = getMainModal;
+exports.getSkillsModal = getSkillsModal;
 exports.getProjectModal = getProjectModal;
 exports.getProjectModal2 = getProjectModal2;
 exports.getSkillsQualificationsModal1 = getSkillsQualificationsModal1;
@@ -18,6 +19,13 @@ function getMainModal() {
     return __awaiter(this, void 0, void 0, function* () {
         return (yield db_1.db).execute(`
         SELECT * FROM Experience;
+        `).then((res) => res).catch((err) => err);
+    });
+}
+function getSkillsModal() {
+    return __awaiter(this, void 0, void 0, function* () {
+        return (yield db_1.db).execute(`
+        SELECT * FROM Skills;
         `).then((res) => res).catch((err) => err);
     });
 }

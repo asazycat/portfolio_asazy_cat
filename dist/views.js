@@ -1,11 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.renderMain = renderMain;
+exports.renderSkills = renderSkills;
 exports.renderProject = renderProject;
 exports.renderSkillsQualifications = renderSkillsQualifications;
 exports.renderContact = renderContact;
 function renderMain(data, res) {
-    res.render('main', { layout: 'index', experience: data[0] });
+    const [data1, data2] = data;
+    res.render('main', { layout: 'index', experience: data1[0], skills_list: data2[0] });
+}
+function renderSkills(data, res) {
+    res.render('main', { layout: 'index', skills_list: data[0] });
 }
 function renderProject(data, res) {
     const [data1, data2] = data;

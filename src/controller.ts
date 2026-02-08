@@ -1,10 +1,18 @@
-import { renderContact, renderMain, renderProject, renderSkillsQualifications } from "./views";
-import { getMainModal, getProjectModal, getProjectModal2, getSkillsQualificationsModal1 } from "./modal";
+import { renderContact, renderMain, renderSkills, renderProject, renderSkillsQualifications } from "./views";
+import { getMainModal, getSkillsModal, getProjectModal, getProjectModal2, getSkillsQualificationsModal1 } from "./modal";
 import { Request, Response } from "express";
 
 export  async function getmainController(req: Request,res: Response) {
-    const data =  await getMainModal()
+    const data1 =  await getMainModal()
+    const data2 =  await getSkillsModal()
+    const data = [data1, data2]
     renderMain(data,res)
+
+}
+
+export  async function getSkillsController(req: Request,res: Response) {
+    const data =  await getSkillsModal()
+    renderSkills(data,res)
 
 }
 

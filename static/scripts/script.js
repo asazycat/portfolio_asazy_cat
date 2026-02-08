@@ -33,6 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     ////////////////////////
+    Array.from(document.getElementsByClassName('eachSkill'))?.forEach((element) => {
+        element.addEventListener('mouseenter', (e) => {
+        e.target.firstElementChild.style.display = 'none'
+        e.target.lastElementChild.style.display = 'block'
+    })
+    })
+
+   Array.from(document.getElementsByClassName('eachSkill'))?.forEach((element) => {
+        element.addEventListener('mouseleave', (e) => {
+         e.target.firstElementChild.style.display = 'block'
+        e.target.lastElementChild.style.display = 'none'
+    })
+    })
+    ////////////////////////////
 
     document.getElementsByClassName('techType')[0]?.addEventListener('click', (e) => {
          e.stopImmediatePropagation()
@@ -157,17 +171,46 @@ document.addEventListener('DOMContentLoaded', () => {
    
     document.getElementsByClassName('listOfQualifications')[0]?.addEventListener('click', (e) => {
         e.stopImmediatePropagation()
-        const cert_link = e.target.nextElementSibling.children[2].textContent
+        console.log(e.target.parentElement.children[1].children[1])
+        const cert_link = e.target.parentElement.children[1].children[1].children[2].textContent
+        console.log(cert_link)
             document.getElementsByClassName('cert_img')[0]?.setAttribute('src', cert_link)
     })
     
-    document.getElementsByClassName('button_qualification')[0]?.addEventListener('click', (e) => {
-         e.stopImmediatePropagation()
-        alert(e.target.value)
-    })
     
     document.getElementsByClassName('cert_img')[0]?.addEventListener('click', (e) => {
         e.stopPropagation()
+    });
+
+    document.getElementsByClassName('qualificationsDetails')[0]?.addEventListener('click',(e) => {
+        e.stopImmediatePropagation()
+        console.log(e.target)
+        if(e.target.textContent === 'Description') {
+            e.target.style.color = '#CBDB44';
+            e.target.previousElementSibling.style.color = '#f9fbec';
+            e.target.nextElementSibling.style.color = '#f9fbec';
+
+            document.getElementById(`${e.target.textContent}`).previousElementSibling.style.display = 'none';
+            document.getElementById(`${e.target.textContent}`).style.display = 'block';
+            document.getElementById(`${e.target.textContent}`).nextElementSibling.style.display = 'none';
+        } else if(e.target.textContent === 'Contents') {
+            e.target.style.color = '#CBDB44';
+            e.target.previousElementSibling.style.color = '#f9fbec';
+            e.target.previousElementSibling.previousElementSibling.style.color = '#f9fbec';
+
+            console.log(document.getElementById(`${e.target.textContent}`))
+            document.getElementById(`${e.target.textContent}`).previousElementSibling.style.display = 'none';
+            document.getElementById(`${e.target.textContent}`).style.display = 'block';
+            document.getElementById(`${e.target.textContent}`).previousElementSibling.previousElementSibling.style.display = 'none';
+        } else if(e.target.textContent === 'Certificate') {
+            e.target.style.color = '#CBDB44';
+            e.target.nextElementSibling.style.color = '#f9fbec';
+            e.target.nextElementSibling.nextElementSibling.style.color = '#f9fbec';
+           
+            document.getElementsByClassName('cert_img')[0].style.display = 'block';
+            document.getElementById('Description').style.display = 'none';
+            document.getElementById('Contents').style.display = 'none';
+        }
     })
 
 

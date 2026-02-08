@@ -7,7 +7,12 @@ export  async function getMainModal() {
         SELECT * FROM Experience;
         `).then((res) => res).catch((err) => err)
 }
-
+export  async function getSkillsModal() {
+   
+    return (await db).execute(`
+        SELECT * FROM Skills;
+        `).then((res) => res).catch((err) => err)
+}
 
 
 export  async function getProjectModal() {

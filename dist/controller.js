@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getmainController = getmainController;
+exports.getSkillsController = getSkillsController;
 exports.getProjectController = getProjectController;
 exports.getSkillsQualificationsController = getSkillsQualificationsController;
 exports.getContactController = getContactController;
@@ -17,8 +18,16 @@ const views_1 = require("./views");
 const modal_1 = require("./modal");
 function getmainController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const data = yield (0, modal_1.getMainModal)();
+        const data1 = yield (0, modal_1.getMainModal)();
+        const data2 = yield (0, modal_1.getSkillsModal)();
+        const data = [data1, data2];
         (0, views_1.renderMain)(data, res);
+    });
+}
+function getSkillsController(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = yield (0, modal_1.getSkillsModal)();
+        (0, views_1.renderSkills)(data, res);
     });
 }
 function getProjectController(req, res) {
