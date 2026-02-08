@@ -66,6 +66,14 @@
     font-size: 1.5em;
 }
 
+.exp_details > h1 {
+    font-family:'Inter';
+}
+
+.exp_details > p {
+    font-family:'Inter';
+}
+
 @media (min-width:1000px) {
 
     .Profile {
