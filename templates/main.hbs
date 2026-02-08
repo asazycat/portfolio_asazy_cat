@@ -27,7 +27,7 @@
     <h1 id="exp_head">Experience</h1>
      {{#each experience}}
     <div class="exp_details">
-        <h1>{{this.company_name}} (<p>{{this.start_date}} - {{this.end_date}}</p>)</h1>
+        <h1>{{this.company_name}} ({{#TimeDateFix this.start_date}} {{/TimeDateFix}} - {{#TimeDateFix this.end_date}} {{/TimeDateFix}})</h1>
         <p>{{this.company_desc}}</p>
         
     </div>

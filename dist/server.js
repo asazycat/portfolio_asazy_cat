@@ -16,7 +16,8 @@ const hbs = (0, express_handlebars_1.create)({
     extname: 'hbs',
     helpers: {
         TechType: helpers_1.TechType,
-        TopicArr: helpers_1.TopicArr
+        TopicArr: helpers_1.TopicArr,
+        TimeDateFix: helpers_1.TimeDateFix
     }
 });
 const expressApp = (0, express_1.default)();

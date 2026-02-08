@@ -27,3 +27,9 @@ export function TechType(filter: string, obj: {
 export function TopicArr (para: any) {
    return para.split(', ').map((eachTop: string) => `<li class='eachTopic'>${eachTop}</li>`)
 }
+
+export  function TimeDateFix(date:string) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    const new_date = new Date(date)
+    return `${months[new_date.getMonth() + 1]} ${new_date.getFullYear()} `
+}
