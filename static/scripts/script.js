@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let filteredProjects = [];
     let filterTags = [];
 
-    burgerButton.addEventListener('click', () => {
+    burgerButton.addEventListener('click', (e) => {
          e.stopImmediatePropagation()
         nav.style.display === 'block' ? nav.style.display = 'none' : nav.style.display = 'block'
     })
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', (e) => {
          e.stopImmediatePropagation()
         if(window.innerWidth >= 1000) {
             nav.style.display = 'flex';
