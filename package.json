@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch": "copy-and-watch --watch --clean templates/** dist/templates",
-    "server": "tsc-watch --noClear --onSuccess \"node dist/server.js\"",
+    "server": "tsc-watch --noClear --onSuccess \"nodemon dist/server.js\"",
     "dev": "npm-run-all --parallel watch server",
     "build": "tsc",
     "start": "node dist/server.js"
@@ -29,6 +29,7 @@
     "@types/mysql": "^2.15.27",
     "@types/node": "^20.19.30",
     "copy-and-watch": "^0.1.8",
+    "nodemon": "^3.1.11",
     "npm-run-all": "^4.1.5",
     "tsc-watch": "^7.2.0",
     "tsconfig": "^7.0.0",
