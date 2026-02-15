@@ -1,3 +1,2 @@
-import { Connection } from 'mysql2/promise';
-export declare const db: Promise<Connection>;
+export declare const db: Promise<any>;
 //# sourceMappingURL=db.d.ts.map

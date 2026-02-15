@@ -5,20 +5,20 @@ export  async function getMainModal() {
    
     return (await db).execute(`
         SELECT * FROM Experience;
-        `).then((res) => res).catch((err) => err)
+        `).then((res: any) => res).catch((err: any) => err)
 }
 export  async function getSkillsModal() {
    
     return (await db).execute(`
         SELECT * FROM Skills;
-        `).then((res) => res).catch((err) => err)
+        `).then((res: any) => res).catch((err: any) => err)
 }
 
 
 export  async function getProjectModal() {
       return (await db).execute(`
         SELECT * FROM Technologies;
-        `).then((res) => res).catch((err) => err)
+        `).then((res: any) => res).catch((err: any) => err)
     
 }
 
@@ -31,7 +31,7 @@ export  async function getProjectModal2() {
         LEFT JOIN Project_Tech_list pt
           ON p.project_id = pt.project_id
         GROUP BY p.project_id, p.project_name;
-      `).then((res) => res).catch((err) => err)
+      `).then((res: any) => res).catch((err: any) => err)
     
 }
 
@@ -44,6 +44,6 @@ export async function getSkillsQualificationsModal1() {
         LEFT JOIN Topics t
               ON q.qual_id = t.qual_id
         GROUP BY q.qual_id;
-      `).then((res) => res).catch((err) => err)
+      `).then((res: any) => res).catch((err: any) => err)
     
 }

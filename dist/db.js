@@ -14,23 +14,46 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.db = void 0;
 const promise_1 = __importDefault(require("mysql2/promise"));
-exports.db = (() => __awaiter(void 0, void 0, void 0, function* () {
+let attempts = 0;
+let interval;
+// export const db: Promise<Connection> = (async () =>  {
+//   try{ return await mysql.createConnection({
+//     host: process.env.MYSQLHOST ?? 'localhost',
+//     user: process.env.MYSQLUSER ?? 'root',
+//     password: process.env.MYSQLPASSWORD ?? 'kiloloki',
+//     database: process.env.MYSQLDATABASE ?? 'portfolio'
+// }).then((res: any) => {
+//   console.log(process.env.MYSQLHOST)
+//   console.log(process.env.MYSQLDATABASE)
+//   return res
+// })
+//   } catch(err: any) {
+//     console.log(`${err.statusCode}, ${err.message} ---------------`)
+//     return err
+//   }
+// })()
+const dbCon = () => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d;
-    try {
-        return yield promise_1.default.createConnection({
-            host: (_a = process.env.MYSQLHOST) !== null && _a !== void 0 ? _a : 'localhost',
-            user: (_b = process.env.MYSQLUSER) !== null && _b !== void 0 ? _b : 'root',
-            password: (_c = process.env.MYSQLPASSWORD) !== null && _c !== void 0 ? _c : 'kiloloki',
-            database: (_d = process.env.MYSQLDATABASE) !== null && _d !== void 0 ? _d : 'portfolio'
-        }).then((res) => {
-            console.log(process.env.MYSQLHOST);
-            console.log(process.env.MYSQLDATABASE);
-            return res;
-        });
+    return yield promise_1.default.createConnection({
+        host: (_a = process.env.MYSQLHOST) !== null && _a !== void 0 ? _a : 'localhost',
+        user: (_b = process.env.MYSQLUSER) !== null && _b !== void 0 ? _b : 'root',
+        password: (_c = process.env.MYSQLPASSWORD) !== null && _c !== void 0 ? _c : 'kiloloki',
+        database: (_d = process.env.MYSQLDATABASE) !== null && _d !== void 0 ? _d : 'portfolio'
+    });
+});
+exports.db = dbCon().then((res) => res).catch((err) => {
+    if (attempts < 6) {
+        interval = (function () {
+            return setInterval(() => {
+                attempts++;
+                dbCon();
+            }, attempts * 1000);
+        })();
     }
-    catch (err) {
-        console.log(`${err.statusCode}, ${err.message} ---------------`);
+    else {
+        console.log(err);
+        clearInterval(interval);
         return err;
     }
-}))();
+});
 //# sourceMappingURL=db.js.map
