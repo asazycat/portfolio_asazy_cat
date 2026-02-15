@@ -1,2 +1,2 @@
-export declare const db: Promise<any>;
+export declare let db: Promise<any>;
 //# sourceMappingURL=db.d.ts.map

@@ -1,5 +1,5 @@
 import mysql, { Connection } from 'mysql2/promise';
-let attempts = 0;
+let attempts = 3;
 let interval: string | number | NodeJS.Timeout | undefined;
 
 
@@ -13,14 +13,16 @@ let interval: string | number | NodeJS.Timeout | undefined;
   })
 }
 
-export const db = dbCon().then((res: Connection) => res).catch((err: any) => {
-  if(attempts < 6) { interval = (function() {return setInterval(() => {
+export let db = dbCon().then((res: Connection) => {clearTimeout(interval); return res}).catch((err: any) => {
+  if(attempts < 4) { interval = (function() {return setTimeout(() => {
     attempts++
-    dbCon()
+    db = dbCon()
+    
   }, attempts * 1000)})()}
   else {
     console.log(err)
-    clearInterval(interval)
+    clearTimeout(interval)
     return err
   }
 })
+

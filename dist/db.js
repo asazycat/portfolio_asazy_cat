@@ -14,24 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.db = void 0;
 const promise_1 = __importDefault(require("mysql2/promise"));
-let attempts = 0;
+let attempts = 3;
 let interval;
-// export const db: Promise<Connection> = (async () =>  {
-//   try{ return await mysql.createConnection({
-//     host: process.env.MYSQLHOST ?? 'localhost',
-//     user: process.env.MYSQLUSER ?? 'root',
-//     password: process.env.MYSQLPASSWORD ?? 'kiloloki',
-//     database: process.env.MYSQLDATABASE ?? 'portfolio'
-// }).then((res: any) => {
-//   console.log(process.env.MYSQLHOST)
-//   console.log(process.env.MYSQLDATABASE)
-//   return res
-// })
-//   } catch(err: any) {
-//     console.log(`${err.statusCode}, ${err.message} ---------------`)
-//     return err
-//   }
-// })()
 const dbCon = () => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d;
     return yield promise_1.default.createConnection({
@@ -41,18 +25,18 @@ const dbCon = () => __awaiter(void 0, void 0, void 0, function* () {
         database: (_d = process.env.MYSQLDATABASE) !== null && _d !== void 0 ? _d : 'portfolio'
     });
 });
-exports.db = dbCon().then((res) => res).catch((err) => {
-    if (attempts < 6) {
+exports.db = dbCon().then((res) => { clearTimeout(interval); return res; }).catch((err) => {
+    if (attempts < 4) {
         interval = (function () {
-            return setInterval(() => {
+            return setTimeout(() => {
                 attempts++;
-                dbCon();
+                exports.db = dbCon();
             }, attempts * 1000);
         })();
     }
     else {
         console.log(err);
-        clearInterval(interval);
+        clearTimeout(interval);
         return err;
     }
 });
