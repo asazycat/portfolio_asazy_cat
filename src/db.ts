@@ -1,5 +1,5 @@
 import mysql, { Connection } from 'mysql2/promise';
-let attempts = 3;
+let attempts = 10;
 let interval: string | number | NodeJS.Timeout | undefined;
 
 
