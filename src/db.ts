@@ -1,5 +1,5 @@
-import mysql, { Connection } from 'mysql2/promise';
-let attempts = 10;
+import mysql from 'mysql2/promise';
+let attempts = 1;
 let interval: string | number | NodeJS.Timeout | undefined;
 
 
@@ -13,16 +13,44 @@ let interval: string | number | NodeJS.Timeout | undefined;
   })
 }
 
-export let db = dbCon().then((res: Connection) => {clearTimeout(interval); return res}).catch((err: any) => {
-  if(attempts < 4) { interval = (function() {return setTimeout(() => {
-    attempts++
-    db = dbCon()
+// export let db = dbCon().then((res: Connection) => {clearTimeout(interval); return res}).catch((err: any) => {
+//   if(attempts < 4) { interval = (function() {return setTimeout(() => {
+//     attempts++
+//     db = dbCon()
     
-  }, attempts * 1000)})()}
-  else {
-    console.log(err)
-    clearTimeout(interval)
+//   }, attempts * 1000)})()}
+//   else {
+//     console.log(err)
+//     clearTimeout(interval)
+//     return err
+//   }
+// })
+
+export const db: Promise<mysql.Connection> = (async () => {
+  
+  try {
+      clearTimeout(interval)
+      const db = await dbCon()
+      
+     if(!db) {new Error('Connection failed') } else {
+      return db
+     }
+
+
+} catch (err: any) {
+
+    attempts++ 
+    if (attempts < 11) {
+     interval = (function() {
+      return setTimeout(async () => {
+        return await dbCon();
+      }, attempts * 1000)
+    })();
+  } else {
     return err
   }
-})
 
+
+}
+
+})()

@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.db = void 0;
 const promise_1 = __importDefault(require("mysql2/promise"));
-let attempts = 3;
+let attempts = 1;
 let interval;
 const dbCon = () => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d;
@@ -25,19 +25,40 @@ const dbCon = () => __awaiter(void 0, void 0, void 0, function* () {
         database: (_d = process.env.MYSQLDATABASE) !== null && _d !== void 0 ? _d : 'portfolio'
     });
 });
-exports.db = dbCon().then((res) => { clearTimeout(interval); return res; }).catch((err) => {
-    if (attempts < 4) {
-        interval = (function () {
-            return setTimeout(() => {
-                attempts++;
-                exports.db = dbCon();
-            }, attempts * 1000);
-        })();
-    }
-    else {
-        console.log(err);
+// export let db = dbCon().then((res: Connection) => {clearTimeout(interval); return res}).catch((err: any) => {
+//   if(attempts < 4) { interval = (function() {return setTimeout(() => {
+//     attempts++
+//     db = dbCon()
+//   }, attempts * 1000)})()}
+//   else {
+//     console.log(err)
+//     clearTimeout(interval)
+//     return err
+//   }
+// })
+exports.db = (() => __awaiter(void 0, void 0, void 0, function* () {
+    try {
         clearTimeout(interval);
-        return err;
+        const db = yield dbCon();
+        if (!db) {
+            new Error('Connection failed');
+        }
+        else {
+            return db;
+        }
     }
-});
+    catch (err) {
+        attempts++;
+        if (attempts < 11) {
+            interval = (function () {
+                return setTimeout(() => __awaiter(this, void 0, void 0, function* () {
+                    return yield dbCon();
+                }), attempts * 1000);
+            })();
+        }
+        else {
+            return err;
+        }
+    }
+}))();
 //# sourceMappingURL=db.js.map
