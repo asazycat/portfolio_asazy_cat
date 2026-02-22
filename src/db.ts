@@ -13,19 +13,6 @@ let interval: string | number | NodeJS.Timeout | undefined;
   })
 }
 
-// export let db = dbCon().then((res: Connection) => {clearTimeout(interval); return res}).catch((err: any) => {
-//   if(attempts < 4) { interval = (function() {return setTimeout(() => {
-//     attempts++
-//     db = dbCon()
-    
-//   }, attempts * 1000)})()}
-//   else {
-//     console.log(err)
-//     clearTimeout(interval)
-//     return err
-//   }
-// })
-
 export const db: Promise<mysql.Connection> = (async () => {
   
   try {
