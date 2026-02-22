@@ -1,43 +1,37 @@
 import mysql from 'mysql2/promise';
-let attempts = 1;
-let interval: string | number | NodeJS.Timeout | undefined;
 
+let attempts = 0;
+const MAX_ATTEMPTS = 10;
+const BASE_DELAY_MS = 2000; // 2 seconds
 
-
- const dbCon = async () => {
-    return await mysql.createConnection({
+const dbCon = async () => {
+  return mysql.createConnection({
     host: process.env.MYSQLHOST ?? 'localhost',
     user: process.env.MYSQLUSER ?? 'root',
     password: process.env.MYSQLPASSWORD ?? 'kiloloki',
     database: process.env.MYSQLDATABASE ?? 'portfolio'
-  })
-}
+  });
+};
 
-export const db: Promise<mysql.Connection> = (async () => {
-  
+const connectWithRetry = async (): Promise<mysql.Connection> => {
   try {
-      clearTimeout(interval)
-      const db = await dbCon()
-      
-     if(!db) {new Error('Connection failed') } else {
-      return db
-     }
+    const connection = await dbCon();
+    console.log('✅ Connected to MySQL');
+    return connection;
+  } catch (err) {
+    attempts++;
 
+    if (attempts >= MAX_ATTEMPTS) {
+      console.error('❌ Failed to connect to MySQL after max retries');
+      throw err;
+    }
 
-} catch (err: any) {
+    const delay = BASE_DELAY_MS * attempts;
+    console.warn(`⏳ MySQL not ready. Retrying in ${delay / 1000}s... (${attempts}/${MAX_ATTEMPTS})`);
 
-    attempts++ 
-    if (attempts < 11) {
-     interval = (function() {
-      return setTimeout(async () => {
-        return await dbCon();
-      }, attempts * 1000)
-    })();
-  } else {
-    return err
+    await new Promise((resolve) => setTimeout(resolve, delay));
+    return connectWithRetry();
   }
+};
 
-
-}
-
-})()
+export const db: Promise<mysql.Connection> = connectWithRetry();

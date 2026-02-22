@@ -14,51 +14,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.db = void 0;
 const promise_1 = __importDefault(require("mysql2/promise"));
-let attempts = 1;
-let interval;
+let attempts = 0;
+const MAX_ATTEMPTS = 10;
+const BASE_DELAY_MS = 2000; // 2 seconds
 const dbCon = () => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d;
-    return yield promise_1.default.createConnection({
+    return promise_1.default.createConnection({
         host: (_a = process.env.MYSQLHOST) !== null && _a !== void 0 ? _a : 'localhost',
         user: (_b = process.env.MYSQLUSER) !== null && _b !== void 0 ? _b : 'root',
         password: (_c = process.env.MYSQLPASSWORD) !== null && _c !== void 0 ? _c : 'kiloloki',
         database: (_d = process.env.MYSQLDATABASE) !== null && _d !== void 0 ? _d : 'portfolio'
     });
 });
-// export let db = dbCon().then((res: Connection) => {clearTimeout(interval); return res}).catch((err: any) => {
-//   if(attempts < 4) { interval = (function() {return setTimeout(() => {
-//     attempts++
-//     db = dbCon()
-//   }, attempts * 1000)})()}
-//   else {
-//     console.log(err)
-//     clearTimeout(interval)
-//     return err
-//   }
-// })
-exports.db = (() => __awaiter(void 0, void 0, void 0, function* () {
+const connectWithRetry = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        clearTimeout(interval);
-        const db = yield dbCon();
-        if (!db) {
-            new Error('Connection failed');
-        }
-        else {
-            return db;
-        }
+        const connection = yield dbCon();
+        console.log('✅ Connected to MySQL');
+        return connection;
     }
     catch (err) {
         attempts++;
-        if (attempts < 11) {
-            interval = (function () {
-                return setTimeout(() => __awaiter(this, void 0, void 0, function* () {
-                    return yield dbCon();
-                }), attempts * 1000);
-            })();
+        if (attempts >= MAX_ATTEMPTS) {
+            console.error('❌ Failed to connect to MySQL after max retries');
+            throw err;
         }
-        else {
-            return err;
-        }
+        const delay = BASE_DELAY_MS * attempts;
+        console.warn(`⏳ MySQL not ready. Retrying in ${delay / 1000}s... (${attempts}/${MAX_ATTEMPTS})`);
+        yield new Promise((resolve) => setTimeout(resolve, delay));
+        return connectWithRetry();
     }
-}))();
+});
+exports.db = connectWithRetry();
 //# sourceMappingURL=db.js.map
