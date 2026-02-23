@@ -17,7 +17,7 @@ const connectWithRetry = async (): Promise<mysql.Connection> => {
   try {
     const connection = await dbCon();
     console.log('✅ Connected to MySQL');
-    if(!connection) new Error('Cannot Connect');
+    if(!connection) throw new Error('Cannot Connect');
     return connection;
   } catch (err) {
     attempts++;
