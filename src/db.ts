@@ -17,6 +17,7 @@ const connectWithRetry = async (): Promise<mysql.Connection> => {
   try {
     const connection = await dbCon();
     console.log('✅ Connected to MySQL');
+    if(!connection) new Error('Cannot Connect');
     return connection;
   } catch (err) {
     attempts++;
@@ -27,7 +28,6 @@ const connectWithRetry = async (): Promise<mysql.Connection> => {
     }
 
     const delay = BASE_DELAY_MS * attempts;
-    attempts++
     console.warn(`⏳ MySQL not ready. Retrying in ${delay / 1000}s... (${attempts}/${MAX_ATTEMPTS})`);
 
     await new Promise((resolve) => setTimeout(resolve, delay));
