@@ -16,8 +16,11 @@ const dbCon = async () => {
 const connectWithRetry = async (): Promise<mysql.Connection> => {
   try {
     const connection = await dbCon();
+
+    // Force a real DB operation so we know MySQL is actually ready
+    await connection.query('SELECT 1');
+
     console.log('✅ Connected to MySQL');
-    if(!connection) throw new Error('Cannot Connect');
     return connection;
   } catch (err) {
     attempts++;
