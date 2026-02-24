@@ -18,7 +18,7 @@ const connectWithRetry = async (): Promise<mysql.Connection> => {
     const connection = await dbCon();
 
     // Force a real DB operation so we know MySQL is actually ready
-    await connection.query('SELECT 1');
+    await connection.query('SELECT * FROM Projects;');
 
     console.log('✅ Connected to MySQL');
     return connection;
